@@ -20,13 +20,18 @@ pollutantmean <- function (directory, pollutant, id = 1:332){
                            '.csv', sep ='')
         tempDf <- read.csv(fileName, header = TRUE)
         
-        pollMeans[counter] <- mean(tempDf[[pollutant]], na.rm = TRUE)
-        pollCounts [counter] <- sum(complete.cases(tempDf[[pollutant]]))
+        meanPoll <- mean(tempDf[[pollutant]], na.rm = TRUE)
+        
+        if (!is.nan (meanPoll)) {
+            pollMeans[counter] <- meanPoll
+            pollCounts [counter] <- sum(complete.cases(tempDf[[pollutant]]))
+        }
         counter = counter + 1
     }
     sum (pollMeans*pollCounts)/sum(pollCounts)
 }
 
-print(pollutantmean("specdata", "sulfate", 1:10))
-print(pollutantmean("specdata", "nitrate", 70:72))
-print(pollutantmean("specdata", "nitrate", 23))
+# print (pollutantmean("specdata", "sulfate", 1:10))
+#print (pollutantmean("specdata", "nitrate", 1:275))
+# print (pollutantmean("specdata", "nitrate", 23))
+# print (pollutantmean("specdata", "sulfate", 1:10))

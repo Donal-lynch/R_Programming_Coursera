@@ -40,6 +40,6 @@ corr <- function (directory, threshold = 0) {
 # print (summary(cr))
 # print (length(cr))
 
-cr <- corr("specdata")
-print (summary(cr))
-print (length(cr))
+# cr <- corr("specdata")
+# print (summary(cr))
+# print (length(cr))
